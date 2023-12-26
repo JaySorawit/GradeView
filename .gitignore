@@ -1,0 +1,12 @@
+# Ignore bin and obj directories
+[Bb]in/
+[Oo]bj/
+
+# Ignore NuGet packages
+*.nuget/
+*.nupkg
+
+# Ignore user-specific files
+*.suo
+*.user
+*.sln.docstates
