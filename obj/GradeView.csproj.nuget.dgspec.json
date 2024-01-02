@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jay/Documents/GitHub/BasicASP/GradeView/GradeView.csproj": {}
+    "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\GradeView.csproj": {}
   },
   "projects": {
-    "/Users/jay/Documents/GitHub/BasicASP/GradeView/GradeView.csproj": {
+    "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\GradeView.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jay/Documents/GitHub/BasicASP/GradeView/GradeView.csproj",
+        "projectUniqueName": "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\GradeView.csproj",
         "projectName": "GradeView",
-        "projectPath": "/Users/jay/Documents/GitHub/BasicASP/GradeView/GradeView.csproj",
-        "packagesPath": "/Users/jay/.nuget/packages/",
-        "outputPath": "/Users/jay/Documents/GitHub/BasicASP/GradeView/obj/",
+        "projectPath": "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\GradeView.csproj",
+        "packagesPath": "C:\\Users\\jay\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/jay/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\jay\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -56,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

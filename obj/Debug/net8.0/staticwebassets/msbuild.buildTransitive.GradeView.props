@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../buildMultiTargeting/GradeView.props" />
+  <Import Project="..\buildMultiTargeting\GradeView.props" />
 </Project>

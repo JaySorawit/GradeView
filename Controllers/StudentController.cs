@@ -1,4 +1,7 @@
+using GradeView.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.ObjectPool;
+using Microsoft.VisualBasic;
 
 namespace GradeView.Controllers
 {
@@ -6,12 +9,17 @@ namespace GradeView.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var s1 = new Student();
+            s1.Id = 1;
+            s1.Name = "John";
+            s1.Score = 90;
+
+            return View(s1);
         }
 
         public IActionResult Create()
         {
-            return Content("score detail");
+            return View();
         }
     }
 }
