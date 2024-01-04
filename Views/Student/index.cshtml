@@ -1,8 +1,24 @@
-@model GradeView.Models.Student;
+@model IEnumerable<GradeView.Models.Student>
 @{
     ViewData["Title"] = "Student score";
 }
 <h1> Student score</h1>
-<p> student ID: @Model.Id </p>
-<p> student Name: @Model.Name </p>
-<p> student Score: @Model.Score </p>
+
+@foreach (var student in Model)
+{
+    <div>
+        <hr />
+        <p> student ID: @student.Id </p>
+        <p> student Name: @student.Name </p>
+        <p> student Score: @student.Score </p>
+        @if (student.Score >= 60)
+        {
+            <p> student Status: Pass </p>
+        }
+        else
+        {
+            <p> student Status: Fail </p>
+        }
+    </div>
+}
+
