@@ -1,10 +1,9 @@
 @{
-    ViewData["Title"] = "Create student score";
+    ViewData["Title"] = "Edit";
 }
 @model Student
-
-<h1 class="text-center"> Create Student Score</h1>
-<form method="POST" style="display: flex; gap:20px; flex-direction: column;" asp-action="Create" asp-controller="Student">
+<h1> Edit </h1>
+<form method="POST" style="display: flex; gap:20px; flex-direction: column;" asp-action="Edit" asp-controller="Student">
     <div class="form-group">
         <label asp-for="Name">Student Name</label>
         <input type="text" class="form-control" asp-for="Name" placeholder="Enter student name" required>

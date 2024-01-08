@@ -1,4 +1,6 @@
+using GradeView.Data;
 using GradeView.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ObjectPool;
 using Microsoft.VisualBasic;
@@ -7,27 +9,12 @@ namespace GradeView.Controllers
 {
     public class StudentController : Controller
     {
+        private readonly AppDbContext _db;
+        public StudentController(AppDbContext db) => _db = db;
+
         public IActionResult Index()
         {
-            var s1 = new Student();
-            s1.Id = 1;
-            s1.Name = "John";
-            s1.Score = 90;
-
-            var s2 = new Student();
-            s2.Id = 2;
-            s2.Name = "Jane";
-            s2.Score = 50;
-
-            var s3 = new Student();
-            s3.Id = 3;
-            s3.Name = "Jay";
-            s3.Score = 70;
-
-            List<Student> allStudent = new List<Student>();
-            allStudent.Add(s1);
-            allStudent.Add(s2);
-            allStudent.Add(s3);
+            IEnumerable<Student> allStudent = _db.Students.ToList();
 
             return View(allStudent);
         }
@@ -35,6 +22,53 @@ namespace GradeView.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Students.Add(student);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(student);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var student = _db.Students.Find(id);
+            if (student == null) return NotFound();
+
+            return View(student);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Students.Update(student);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(student);
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0) return NotFound();
+
+            var student = _db.Students.Find(id);
+            if (student == null) return NotFound();
+            _db.Students.Remove(student);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
