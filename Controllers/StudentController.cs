@@ -26,17 +26,19 @@ namespace GradeView.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Student student)
+        public IActionResult Create(Student newStudent, string confirmPassword)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && newStudent.Password == confirmPassword)
             {
-                _db.Students.Add(student);
+                _db.Students.Add(newStudent);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Student");
             }
-            return View(student);
-        }
+            else if (newStudent.Password != confirmPassword) ModelState.AddModelError("ConfirmPassword", "The password and confirmation password do not match.");
 
+            return View(newStudent);
+        }
+        
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0) return NotFound();

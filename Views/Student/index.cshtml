@@ -26,7 +26,7 @@ else
             <tr>
                     <td>@student.Id</td>
                     <td>@student.Name</td>
-                    <td>@student.Score</td>
+                    @* <td>@student.Score</td>
                     @if (student.Score >= 60)
                     {
                         <td>Pass</td>
@@ -34,7 +34,7 @@ else
                     else
                     {
                         <td>Fail</td>
-                    }
+                    } *@
                     <td>
                         <a class="btn btn-warning"
                         asp-controller="Student"
