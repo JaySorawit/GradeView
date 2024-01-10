@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\wwwroot\\img\\3-Login-Page-Screen.jpg",
+      "PackagePath": "staticwebassets\\img\\3-Login-Page-Screen.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\wwwroot\\img\\LogIn.svg",
+      "PackagePath": "staticwebassets\\img\\LogIn.svg"
+    },
+    {
       "Id": "C:\\Users\\jay\\Documents\\GitHub\\GradeView\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

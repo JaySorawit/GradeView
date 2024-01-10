@@ -1,8 +1,46 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Login";
 }
+@model Student
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+</head>
+<body style="background-color: #8567dc;>
+    <div class="container">
+        <div class="row mx-auto" style="margin-top: 100px; width: 80%; ">
+            <div class="col-4 p-4" style="background-color: #f8f8f8;">
+            <h4 style="padding: 20px 20px 0px; color:#2b1d7a">Log In</h4>
+            <form method="post" asp-controller="Account" asp-action="Login">
+                <div style="display: flex; 
+                flex-direction: column;
+                margin: 0 auto;
+                gap: 20px;
+                padding:20px;">
+                <div class="form-group">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-control" placeholder="you@example.com"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" class="form-control" placeholder="Enter password"/>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <a> Doesn't have an account yet?</a>
+                <button type="submit" class="btn btn-primary" style="background-color: #583bf5; border: solid 1px #583bf5;">Log In</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-8" style="background-color: #fff;">
+            <img src="@Url.Content("~/img/LogIn.svg")" alt="Login" style="width: 100%; height: 100%;" />
+        </div>
+    </div>
 </div>
+</body>
+</html>
+
