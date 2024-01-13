@@ -8,11 +8,12 @@ namespace GradeView.Controllers
     {
         private readonly AppDbContext _db;
         public AccountController(AppDbContext db) => _db = db;
-        
+
         public IActionResult Index()
         {
             return View();
         }
+    
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -20,9 +21,11 @@ namespace GradeView.Controllers
         {
             if (ModelState.IsValid)
             {
-                var student = _db.Students.Find(Email);
+                var student = _db.Students.FirstOrDefault(s => s.Email == Email);
                 if (student != null && student.Password == Password)
                 {
+                    int studentId = student.Id;
+                    TempData["studentId"] = studentId;
                     return RedirectToAction("Index", "Student");
                 }
                 else
@@ -30,7 +33,6 @@ namespace GradeView.Controllers
                     ModelState.AddModelError("Password", "The Email or password is incorrect.");
                 }
             }
-
             return View();
         }
 
