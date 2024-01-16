@@ -25,7 +25,8 @@ namespace GradeView.Controllers
                 if (student != null && student.Password == Password)
                 {
                     int studentId = student.Id;
-                    TempData["studentId"] = studentId;
+                    HttpContext.Session.SetInt32("studentId", studentId);
+                    Console.WriteLine(HttpContext.Session.GetInt32("studentId"));
                     return RedirectToAction("Index", "Student");
                 }
                 else

@@ -1,9 +1,7 @@
 using GradeView.Data;
 using GradeView.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.ObjectPool;
-using Microsoft.VisualBasic;
+
 
 namespace GradeView.Controllers
 {
@@ -14,15 +12,19 @@ namespace GradeView.Controllers
 
         public IActionResult Index()
         {
+
+            int? studentId = HttpContext.Session.GetInt32("studentId");
+            var student = _db.Students.Find(studentId);
+            return View(student);
+        }
+
+        public IActionResult Score()
+        {
             IEnumerable<Student> allStudent = _db.Students.ToList();
 
             return View(allStudent);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
