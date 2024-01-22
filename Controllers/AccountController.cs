@@ -1,5 +1,4 @@
 using GradeView.Data;
-using GradeView.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GradeView.Controllers
@@ -22,10 +21,23 @@ namespace GradeView.Controllers
             if (ModelState.IsValid)
             {
                 var student = _db.Students.FirstOrDefault(s => s.Email == Email);
+                var teacher = _db.Teachers.FirstOrDefault(s => s.Email == Email);
+                if (teacher != null && teacher.Password == Password)
+                {
+                    int teacherId = teacher.Id;
+                    HttpContext.Session.SetInt32("teacherId", teacherId);
+                    HttpContext.Session.SetString("isTeacherLoggIn", "true");
+                    HttpContext.Session.SetString("userType", "teacher");
+                    Console.WriteLine(HttpContext.Session.GetInt32("teacherId"));
+                    return RedirectToAction("Index", "Teacher");
+                }
+                else
                 if (student != null && student.Password == Password)
                 {
                     int studentId = student.Id;
                     HttpContext.Session.SetInt32("studentId", studentId);
+                    HttpContext.Session.SetString("isStudentLoggIn", "true");
+                    HttpContext.Session.SetString("userType", "student");
                     Console.WriteLine(HttpContext.Session.GetInt32("studentId"));
                     return RedirectToAction("Index", "Student");
                 }

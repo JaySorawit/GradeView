@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "Teacher Registration";
+}
+@model Teacher
+
+<h1 class="text-center"> Register Teacher account</h1>
+<form method="POST" style="display: flex; gap:20px; flex-direction: column;" asp-action="Create" asp-controller="Teacher">
+    <div class="form-group">
+        <label asp-for="Name">Teacher Name</label>
+        <input type="text" class="form-control" asp-for="Name" placeholder="Enter Teacher name" required>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Surname">Teacher Surname</label>
+        <input type="text" class="form-control" asp-for="Surname" placeholder="Enter Teacher Surname" required>
+        <span asp-validation-for="Surname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfBirth">Teacher date of birth</label>
+        <input type="date" class="form-control" asp-for="DateOfBirth" placeholder="Enter Teacher DateOfBirth" required>
+        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Gender">Teacher Gender</label>
+        <input type="text" class="form-control" asp-for="Gender" placeholder="Enter Teacher Gender" required>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Teacher Email</label>
+        <input type="email" class="form-control" asp-for="Email" placeholder="Enter Teacher Email" required>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Teacher Password</label>
+        <input type="password" class="form-control" asp-for="Password" id="Password" placeholder="Enter Teacher Password" required>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm Teacher Password" required>
+        <span id="passwordMatch" class="text-danger"></span>
+    </div>
+    <a asp-controller="Student" asp-action="create" style="font-size: small; text-decoration:none;"> Are you a student?</a>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var passwordInput = document.getElementById('Password');
+        var confirmPasswordInput = document.getElementById('ConfirmPassword');
+        var passwordMatchMessage = document.getElementById('passwordMatch');
+
+        confirmPasswordInput.addEventListener('input', function () {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+
+            if (password === confirmPassword) {
+                passwordMatchMessage.textContent = '';
+            } else {
+                passwordMatchMessage.textContent = 'Passwords do not match';
+            }
+        });
+    });
+</script>

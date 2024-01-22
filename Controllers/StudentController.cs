@@ -25,6 +25,10 @@ namespace GradeView.Controllers
             return View(allStudent);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]

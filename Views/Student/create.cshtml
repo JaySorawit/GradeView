@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Create student score";
+    ViewData["Title"] = "Student Registration";
 }
 @model GradeView.Models.Student
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -47,6 +47,7 @@
         <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Confirm student Password" required>
         <span id="passwordMatch" class="text-danger"></span>
     </div>
+    <a asp-controller="Teacher" asp-action="create" style="font-size: small; text-decoration:none;"> Are you a teacher?</a>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

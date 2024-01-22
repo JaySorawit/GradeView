@@ -4,14 +4,16 @@ using GradeView.Models;
 
 namespace GradeView.Controllers
 {
-    public class CourseController : Controller
+    public class TeacherController : Controller
     {
         private readonly AppDbContext _db;
-        public CourseController(AppDbContext db) => _db = db;
+        public TeacherController(AppDbContext db) => _db = db;
 
         public IActionResult Index()
         {
-            return View();
+            int? teacherId = HttpContext.Session.GetInt32("teacherId");
+            var teacher = _db.Teachers.Find(teacherId);
+            return View(teacher);
         }
 
         public IActionResult Privacy()
@@ -26,15 +28,15 @@ namespace GradeView.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Course newCourse)
+        public IActionResult Create(Teacher newTeacher)
         {
             if (ModelState.IsValid)
             {
-                _db.Courses.Add(newCourse);
+                _db.Teachers.Add(newTeacher);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(newCourse);
+            return View(newTeacher);
         }
 
         public IActionResult Edit()
