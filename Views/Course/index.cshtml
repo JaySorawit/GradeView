@@ -1,0 +1,43 @@
+@{
+    ViewData["Title"] = "Course";
+}
+@model IEnumerable<GradeView.Models.Course>
+
+<div class="d-flex justify-content-between">
+    <h1>Course</h1>
+    <a class="btn btn-primary" asp-controller="Course" asp-action="Create" style="height: fit-content;">Create Course</a>
+</div>
+@{
+    <table class="table">
+        <thead>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Course Credit</th>
+            <th>Course Teacher</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Credit</td>
+                    <td>@item.TeacherId</td>
+                    <td>
+                        <a class="btn btn-warning"
+                        asp-controller="Course"
+                        asp-action="Edit" 
+                        asp-route-id="@item.Id" >Edit</a>
+                    </td>
+                    <td>
+                        <form asp-controller="Course" asp-action="Delete" method="POST" onsubmit="return confirm('Do you want to delete @item.Id ?')">
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+    </table>
+}

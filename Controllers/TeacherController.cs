@@ -34,7 +34,8 @@ namespace GradeView.Controllers
             {
                 _db.Teachers.Add(newTeacher);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return View();
+                // return RedirectToAction("Index");
             }
             return View(newTeacher);
         }

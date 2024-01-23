@@ -17,6 +17,6 @@ namespace GradeView.Models
         public int Credit { get; set; }
 
         [Required(ErrorMessage = "Please enter course teacher")]
-        public string? Teacher { get; set; }
+        public string? TeacherId { get; set; }
     }
 }
